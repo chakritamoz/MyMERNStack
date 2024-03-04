@@ -1,8 +1,8 @@
 const Product = require('../models/product');
 
-exports.fineAll = async (req, res) => {
+exports.findAll = async (req, res) => {
   try {
-    const products = await Product.fine({});
+    const products = await Product.find({});
     res.send(products);
   } catch (err) {
     console.log(err);
@@ -10,10 +10,10 @@ exports.fineAll = async (req, res) => {
   }
 }
 
-exports.fineOne = async (req, res) => {
+exports.findOne = async (req, res) => {
   try {
     const id = req.params.id;
-    const product = await Product.fineOne({ _id: id });
+    const product = await Product.findOne({ _id: id });
     res.send(product);
   } catch (err) {
     console.log(err);
@@ -36,7 +36,7 @@ exports.update = async (req, res) => {
   try {
     const id = req.params.id;
     const product = req.body;
-    await Product.fineOneAndUpdate({ _id: id }, product);
+    await Product.findOneAndUpdate({ _id: id }, product);
     res.send('update product successful');
   } catch (err) {
     console.log(err);
@@ -47,7 +47,7 @@ exports.update = async (req, res) => {
 exports.remove = async (req, res) => {
   try {
     const id = req.params.id;
-    const product = await Product.fineOneAndDelete({ _id: id });
+    const product = await Product.findOneAndDelete({ _id: id });
     res.send(`remove product ${product.name} successful`);
   } catch (err) {
     console.log(err);
