@@ -24,7 +24,7 @@ exports.findOne = async (req, res) => {
 exports.create = async (req, res) => {
   try {
     const product = req.body;
-    await Product({product}).save();
+    await Product(product).save();
     res.send('create new product successful');
   } catch (err) {
     console.log(err);
